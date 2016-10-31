@@ -18,15 +18,17 @@
 
 package storm.benchmark.tools;
 
-import backtype.storm.Config;
-import backtype.storm.StormSubmitter;
-import backtype.storm.generated.AlreadyAliveException;
-import backtype.storm.generated.InvalidTopologyException;
-import backtype.storm.generated.StormTopology;
-import backtype.storm.utils.Utils;
 import org.apache.log4j.Logger;
-import org.yaml.snakeyaml.Yaml;
-import org.yaml.snakeyaml.constructor.SafeConstructor;
+
+import org.apache.storm.Config;
+import org.apache.storm.StormSubmitter;
+import org.apache.storm.generated.AlreadyAliveException;
+import org.apache.storm.generated.AuthorizationException;
+import org.apache.storm.generated.InvalidTopologyException;
+import org.apache.storm.generated.StormTopology;
+import org.apache.storm.shade.org.yaml.snakeyaml.Yaml;
+import org.apache.storm.shade.org.yaml.snakeyaml.constructor.SafeConstructor;
+import org.apache.storm.utils.Utils;
 import storm.benchmark.api.IApplication;
 import storm.benchmark.api.IBenchmark;
 import storm.benchmark.api.IProducer;
@@ -62,7 +64,7 @@ public class Runner {
 
   public static void run(String name)
           throws ClassNotFoundException, IllegalAccessException,
-          InstantiationException, AlreadyAliveException, InvalidTopologyException {
+          InstantiationException, AlreadyAliveException, InvalidTopologyException, AuthorizationException {
     if (name.startsWith("storm.benchmark.benchmarks")) {
       LOG.info("running benchmark " + name);
       runBenchmark((IBenchmark) getApplicationFromName(name));
@@ -76,7 +78,7 @@ public class Runner {
 
   public static void runBenchmark(IBenchmark benchmark)
           throws AlreadyAliveException, InvalidTopologyException,
-          ClassNotFoundException, IllegalAccessException, InstantiationException {
+          ClassNotFoundException, IllegalAccessException, InstantiationException, AuthorizationException {
     runApplication(benchmark);
     if (isMetricsEnabled()) {
       IMetricsCollector collector = benchmark.getMetricsCollector(config, topology);
@@ -86,7 +88,7 @@ public class Runner {
 
   public static void runProducer(IProducer producer)
           throws AlreadyAliveException, InvalidTopologyException,
-          ClassNotFoundException, IllegalAccessException, InstantiationException {
+          ClassNotFoundException, IllegalAccessException, InstantiationException, AuthorizationException {
     runApplication(producer);
   }
 
@@ -97,7 +99,7 @@ public class Runner {
   }
 
   private static void runApplication(IApplication app)
-          throws AlreadyAliveException, InvalidTopologyException {
+          throws AlreadyAliveException, InvalidTopologyException, AuthorizationException {
     String name = (String) config.get(Config.TOPOLOGY_NAME);
     topology = app.getTopology(config);
     StormSubmitter.submitTopology(name, config, topology);
