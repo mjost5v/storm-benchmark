@@ -18,11 +18,11 @@
 
 package storm.benchmark.metrics;
 
-import backtype.storm.Config;
-import backtype.storm.generated.*;
-import backtype.storm.utils.NimbusClient;
-import backtype.storm.utils.Utils;
 import org.apache.log4j.Logger;
+import org.apache.storm.Config;
+import org.apache.storm.generated.*;
+import org.apache.storm.utils.NimbusClient;
+import org.apache.storm.utils.Utils;
 import storm.benchmark.lib.spout.RandomMessageSpout;
 import storm.benchmark.util.BenchmarkUtils;
 import storm.benchmark.util.FileUtils;
