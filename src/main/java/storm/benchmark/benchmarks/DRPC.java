@@ -36,14 +36,14 @@ import org.apache.storm.trident.state.StateFactory;
 import org.apache.storm.trident.state.map.ReadOnlyMapState;
 import org.apache.storm.trident.testing.MemoryMapState;
 import org.apache.storm.tuple.Fields;
-import storm.benchmark.metrics.DRPCMetricsCollector;
-import storm.benchmark.metrics.IMetricsCollector;
 import storm.benchmark.benchmarks.common.StormBenchmark;
-import storm.benchmark.tools.PageViewGenerator;
 import storm.benchmark.lib.operation.Distinct;
 import storm.benchmark.lib.operation.Expand;
 import storm.benchmark.lib.operation.One;
 import storm.benchmark.lib.operation.Print;
+import storm.benchmark.metrics.DRPCMetricsCollector;
+import storm.benchmark.metrics.IMetricsCollector;
+import storm.benchmark.tools.PageViewGenerator;
 import storm.benchmark.util.BenchmarkUtils;
 import storm.benchmark.util.KafkaUtils;
 

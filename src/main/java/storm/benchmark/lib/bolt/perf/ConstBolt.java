@@ -15,33 +15,37 @@
  * See the License for the specific language governing permissions and
  * limitations under the License
  */
-package storm.benchmark.lib.bolt;
 
-import org.apache.storm.task.OutputCollector;
+package storm.benchmark.lib.bolt.perf;
+
 import org.apache.storm.task.TopologyContext;
+import org.apache.storm.topology.BasicOutputCollector;
 import org.apache.storm.topology.OutputFieldsDeclarer;
-import org.apache.storm.topology.base.BaseRichBolt;
+import org.apache.storm.topology.base.BaseBasicBolt;
+import org.apache.storm.tuple.Fields;
 import org.apache.storm.tuple.Tuple;
+import org.apache.storm.tuple.Values;
 
 import java.util.Map;
 
-public class DevNullBolt extends BaseRichBolt {
-    private static final long serialVersionUID = -591870307561384533L;
+public class ConstBolt extends BaseBasicBolt {
+  private static final long serialVersionUID = -5313598399155365865L;
+  public static final String FIELDS = "message";
 
-    private OutputCollector collector;
+  public ConstBolt() {
+  }
 
-    @Override
-    public void prepare(Map map, TopologyContext topologyContext, OutputCollector outputCollector) {
-        this.collector = collector;
-    }
+  @Override
+  public void prepare(Map conf, TopologyContext context) {
+  }
 
-    @Override
-    public void execute(Tuple tuple) {
-        this.collector.ack(tuple);
-    }
+  @Override
+  public void execute(Tuple tuple, BasicOutputCollector collector) {
+    collector.emit(new Values(tuple.getValue(0)));
+  }
 
-    @Override
-    public void declareOutputFields(OutputFieldsDeclarer outputFieldsDeclarer) {
-        // nothing to declare
-    }
+  @Override
+  public void declareOutputFields(OutputFieldsDeclarer declarer) {
+    declarer.declare(new Fields(FIELDS));
+  }
 }

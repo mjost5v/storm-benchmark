@@ -1,4 +1,4 @@
-package storm.benchmark.benchmarks;
+package storm.benchmark.benchmarks.perf;
 
 /*
  * Licensed to the Apache Software Foundation (ASF) under one
@@ -28,9 +28,6 @@ import org.apache.storm.hdfs.bolt.rotation.FileRotationPolicy;
 import org.apache.storm.hdfs.bolt.rotation.FileSizeRotationPolicy;
 import org.apache.storm.hdfs.bolt.sync.CountSyncPolicy;
 import org.apache.storm.hdfs.bolt.sync.SyncPolicy;
-import org.apache.storm.kafka.KafkaSpout;
-import org.apache.storm.kafka.StringScheme;
-import org.apache.storm.spout.SchemeAsMultiScheme;
 import org.apache.storm.topology.IRichSpout;
 import org.apache.storm.topology.TopologyBuilder;
 import org.apache.storm.utils.Utils;
@@ -38,7 +35,6 @@ import storm.benchmark.benchmarks.common.LineWriter;
 import storm.benchmark.benchmarks.common.StormBenchmark;
 import storm.benchmark.lib.spout.RandomMessageSpout;
 import storm.benchmark.util.BenchmarkUtils;
-import storm.benchmark.util.KafkaUtils;
 
 public class StrGenSpoutHdfsBoltTopo extends StormBenchmark {
     public static final String SPOUT_ID = "spout";

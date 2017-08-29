@@ -25,6 +25,7 @@ import org.apache.storm.tuple.Tuple;
 import org.apache.storm.tuple.Values;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import storm.benchmark.lib.bolt.perf.ConstBolt;
 import storm.benchmark.util.MockTupleHelpers;
 
 import static org.mockito.Mockito.*;

@@ -33,7 +33,6 @@ import org.apache.storm.kafka.StringScheme;
 import org.apache.storm.spout.SchemeAsMultiScheme;
 import org.apache.storm.topology.IRichSpout;
 import org.apache.storm.topology.TopologyBuilder;
-import org.apache.storm.tuple.Tuple;
 import org.apache.storm.utils.Utils;
 import storm.benchmark.benchmarks.common.LineWriter;
 import storm.benchmark.benchmarks.common.StormBenchmark;

@@ -15,58 +15,39 @@
  * See the License for the specific language governing permissions and
  * limitations under the License
  */
-
-
-package storm.benchmark.benchmarks;
+package storm.benchmark.benchmarks.perf;
 
 import org.apache.storm.Config;
 import org.apache.storm.generated.StormTopology;
 import org.apache.storm.topology.IRichSpout;
 import org.apache.storm.topology.TopologyBuilder;
 import storm.benchmark.benchmarks.common.StormBenchmark;
-import storm.benchmark.lib.bolt.DevNullBolt;
-import storm.benchmark.lib.bolt.IdBolt;
 import storm.benchmark.lib.spout.ConstSpout;
 import storm.benchmark.util.BenchmarkUtils;
 
-/**
- * ConstSpout -> IdBolt -> DevNullBolt
- * This topology measures speed of messaging between spouts->bolt  and  bolt->bolt
- *   ConstSpout : Continuously emits a constant string
- *   IdBolt : clones and emits input tuples
- *   DevNullBolt : discards incoming tuples
+/***
+ * This topo helps measure how fast a spout can produce data (so no bolts are attached)
+ *  Spout generates a stream of a fixed string.
  */
-public class ConstSpoutIdBoltNullBoltTopo extends StormBenchmark {
-
-    public final static String SPOUT_ID = "spout";
-    public final static String SPOUT_NUM = "component.spout_num";
-    public final static String ID_ID = "id";
-    public final static String ID_NUM = "component.id_bolt_num";
-    public final static String NULL_ID = "null";
-    public final static String NULL_NUM = "component.null_bolt_num";
+public class ConstSpoutOnlyTopo extends StormBenchmark {
+    public static final String SPOUT_ID = "spout";
+    public static final String SPOUT_NUM = "component.spout_num";
 
     public static final int DEFAULT_SPOUT_NUM = 4;
-    public static final int DEFAULT_ID_BOLT_NUM = 4;
-    public static final int DEFAULT_NULL_BOLT_NUM = 4;
 
-    public static final String SPOUT_OUTPUT_MESSAGE = "some data";
-    public static final String SPOUT_OUTPUT_FIELD = "str";
+    public static final String SPOUT_MESSAGE = "some data";
+    public static final String SPOUT_FIELD = "str";
 
     private IRichSpout spout;
 
     @Override
     public StormTopology getTopology(Config config) {
         final int spoutNum = BenchmarkUtils.getInt(config, SPOUT_NUM, DEFAULT_SPOUT_NUM);
-        final int idBoltNum = BenchmarkUtils.getInt(config, ID_NUM, DEFAULT_ID_BOLT_NUM);
-        final int nullBoltNum = BenchmarkUtils.getInt(config, NULL_NUM, DEFAULT_NULL_BOLT_NUM);
-        spout = new ConstSpout(SPOUT_OUTPUT_MESSAGE).withOutputFields(SPOUT_OUTPUT_FIELD);
+
+        spout = new ConstSpout(SPOUT_MESSAGE).withOutputFields(SPOUT_FIELD);
 
         TopologyBuilder builder = new TopologyBuilder();
         builder.setSpout(SPOUT_ID, spout, spoutNum);
-        builder.setBolt(ID_ID, new IdBolt(), idBoltNum)
-                .localOrShuffleGrouping(SPOUT_ID);
-        builder.setBolt(NULL_ID, new DevNullBolt(), nullBoltNum)
-                .localOrShuffleGrouping(ID_ID);
         return builder.createTopology();
     }
 }

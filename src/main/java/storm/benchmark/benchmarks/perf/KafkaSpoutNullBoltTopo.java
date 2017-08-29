@@ -16,7 +16,7 @@
 * See the License for the specific language governing permissions and
 * limitations under the License
 */
-package storm.benchmark.benchmarks;
+package storm.benchmark.benchmarks.perf;
 
 import org.apache.storm.Config;
 import org.apache.storm.generated.StormTopology;
@@ -26,7 +26,7 @@ import org.apache.storm.spout.SchemeAsMultiScheme;
 import org.apache.storm.topology.IRichSpout;
 import org.apache.storm.topology.TopologyBuilder;
 import storm.benchmark.benchmarks.common.StormBenchmark;
-import storm.benchmark.lib.bolt.DevNullBolt;
+import storm.benchmark.lib.bolt.perf.DevNullBolt;
 import storm.benchmark.util.BenchmarkUtils;
 import storm.benchmark.util.KafkaUtils;
 

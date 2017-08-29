@@ -15,7 +15,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License
  */
-package storm.benchmark.lib.bolt;
+package storm.benchmark.lib.bolt.perf;
 
 import org.apache.storm.task.OutputCollector;
 import org.apache.storm.task.TopologyContext;
