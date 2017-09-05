@@ -25,7 +25,7 @@ import org.apache.storm.topology.TopologyBuilder;
 import org.apache.storm.utils.Utils;
 import storm.benchmark.benchmarks.common.StormBenchmark;
 import storm.benchmark.lib.bolt.perf.DevNullBolt;
-import storm.benchmark.lib.spout.ConstSpout;
+import storm.benchmark.lib.spout.perf.ConstSpout;
 import storm.benchmark.util.BenchmarkUtils;
 
 /***

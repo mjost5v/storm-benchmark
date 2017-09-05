@@ -22,7 +22,7 @@ import org.apache.storm.generated.StormTopology;
 import org.apache.storm.topology.IRichSpout;
 import org.apache.storm.topology.TopologyBuilder;
 import storm.benchmark.benchmarks.common.StormBenchmark;
-import storm.benchmark.lib.spout.ConstSpout;
+import storm.benchmark.lib.spout.perf.ConstSpout;
 import storm.benchmark.util.BenchmarkUtils;
 
 /***
