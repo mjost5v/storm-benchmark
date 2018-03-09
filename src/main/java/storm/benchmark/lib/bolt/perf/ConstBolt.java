@@ -16,47 +16,36 @@
  * limitations under the License
  */
 
-package storm.benchmark.lib.bolt;
+package storm.benchmark.lib.bolt.perf;
 
+import org.apache.storm.task.TopologyContext;
 import org.apache.storm.topology.BasicOutputCollector;
 import org.apache.storm.topology.OutputFieldsDeclarer;
+import org.apache.storm.topology.base.BaseBasicBolt;
 import org.apache.storm.tuple.Fields;
 import org.apache.storm.tuple.Tuple;
 import org.apache.storm.tuple.Values;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
-import storm.benchmark.lib.bolt.perf.ConstBolt;
-import storm.benchmark.util.MockTupleHelpers;
 
-import static org.mockito.Mockito.*;
+import java.util.Map;
 
-public class ConstBoltTest {
+public class ConstBolt extends BaseBasicBolt {
+  private static final long serialVersionUID = -5313598399155365865L;
+  public static final String FIELDS = "message";
 
-  private ConstBolt bolt;
-  private Tuple tuple;
-  private BasicOutputCollector collector;
-  private OutputFieldsDeclarer declarer;
-
-  @BeforeMethod
-  public void setUp() {
-    bolt = new ConstBolt();
-    tuple = MockTupleHelpers.mockAnyTuple();
-    collector = mock(BasicOutputCollector.class);
-    declarer = mock(OutputFieldsDeclarer.class);
+  public ConstBolt() {
   }
 
-  @Test
-  public void shouldDeclareOutputFields() {
-    bolt.declareOutputFields(declarer);
-
-    verify(declarer, times(1)).declare(any(Fields.class));
+  @Override
+  public void prepare(Map conf, TopologyContext context) {
   }
 
-  @Test
-  public void shouldEmitFirstFieldOfTuple() {
-    bolt.execute(tuple, collector);
+  @Override
+  public void execute(Tuple tuple, BasicOutputCollector collector) {
+    collector.emit(new Values(tuple.getValue(0)));
+  }
 
-    verify(tuple, times(1)).getValue(0);
-    verify(collector, times(1)).emit(any(Values.class));
+  @Override
+  public void declareOutputFields(OutputFieldsDeclarer declarer) {
+    declarer.declare(new Fields(FIELDS));
   }
 }

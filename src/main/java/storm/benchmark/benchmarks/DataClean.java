@@ -26,9 +26,9 @@ import org.apache.storm.spout.SchemeAsMultiScheme;
 import org.apache.storm.topology.IRichSpout;
 import org.apache.storm.topology.TopologyBuilder;
 import org.apache.storm.tuple.Fields;
+import storm.benchmark.benchmarks.common.StormBenchmark;
 import storm.benchmark.lib.bolt.FilterBolt;
 import storm.benchmark.lib.bolt.PageViewBolt;
-import storm.benchmark.benchmarks.common.StormBenchmark;
 import storm.benchmark.util.BenchmarkUtils;
 import storm.benchmark.util.KafkaUtils;
 

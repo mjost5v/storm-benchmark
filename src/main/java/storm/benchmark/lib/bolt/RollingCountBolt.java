@@ -27,7 +27,6 @@ import org.apache.storm.tuple.Values;
 import storm.benchmark.lib.reducer.LongSummer;
 import storm.benchmark.tools.SlidingWindow;
 
-import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 

@@ -28,8 +28,8 @@ import org.apache.storm.trident.operation.builtin.Count;
 import org.apache.storm.trident.spout.IPartitionedTridentSpout;
 import org.apache.storm.trident.testing.MemoryMapState;
 import org.apache.storm.tuple.Fields;
-import storm.benchmark.lib.operation.WordSplit;
 import storm.benchmark.benchmarks.common.StormBenchmark;
+import storm.benchmark.lib.operation.WordSplit;
 import storm.benchmark.util.BenchmarkUtils;
 import storm.benchmark.util.KafkaUtils;
 

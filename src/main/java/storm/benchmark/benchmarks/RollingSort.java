@@ -36,7 +36,9 @@ import storm.benchmark.util.BenchmarkUtils;
 import storm.benchmark.util.TupleHelpers;
 
 import java.io.Serializable;
-import java.util.*;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 public class RollingSort extends StormBenchmark {
 
