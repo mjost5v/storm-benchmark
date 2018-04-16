@@ -1,4 +1,4 @@
-package storm.benchmark.lib.spout.configurable;
+package storm.benchmark.benchmarks.configurable;
 
 import org.apache.storm.Config;
 import org.apache.storm.generated.StormTopology;
@@ -10,6 +10,7 @@ import storm.benchmark.benchmarks.common.StormBenchmark;
 import storm.benchmark.benchmarks.common.WordCount;
 import storm.benchmark.lib.bolt.RollingBolt;
 import storm.benchmark.lib.bolt.configurable.ConfigurableRollingCountBolt;
+import storm.benchmark.lib.spout.configurable.ConfigurableFileReadSpout;
 import storm.benchmark.util.BenchmarkUtils;
 
 public class ConfigurableRollingCount extends StormBenchmark {
