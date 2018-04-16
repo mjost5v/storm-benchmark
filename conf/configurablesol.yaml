@@ -24,7 +24,7 @@ metrics.path: "reports"
 topology.workers: 4
 topology.acker.executors: 4
 topology.max.spout.pending: 200
-topology.name: "SOL"
+topology.name: "ConfigurableSOL"
 topology.level: 3
 message.size: 100
 component.spout_num: 4

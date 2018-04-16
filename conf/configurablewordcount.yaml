@@ -24,7 +24,7 @@ metrics.path: "reports"
 topology.workers: 4
 topology.acker.executors: 4
 topology.max.spout.pending: 200
-topology.name: "WordCount"
+topology.name: "ConfigurableWordCount"
 component.spout_num: 4
 component.spout_rate: 1
 component.split_bolt_num: 8
