@@ -17,9 +17,9 @@
  */
 package storm.benchmark.lib.tools.starter;
 
-import org.apache.storm.tuple.Tuple;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
+import org.apache.storm.tuple.Tuple;
 
 import java.io.Serializable;
 import java.util.List;

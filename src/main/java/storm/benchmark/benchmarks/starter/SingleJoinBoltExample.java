@@ -18,20 +18,15 @@
 package storm.benchmark.benchmarks.starter;
 
 import org.apache.storm.Config;
-import org.apache.storm.bolt.JoinBolt;
 import org.apache.storm.generated.StormTopology;
 import org.apache.storm.topology.IRichSpout;
 import org.apache.storm.topology.TopologyBuilder;
-import org.apache.storm.topology.base.BaseWindowedBolt;
 import org.apache.storm.tuple.Fields;
 import storm.benchmark.benchmarks.common.StormBenchmark;
-import storm.benchmark.lib.bolt.perf.DevNullBolt;
 import storm.benchmark.lib.bolt.starter.SingleJoinBolt;
 import storm.benchmark.lib.spout.starter.AgeSpout;
 import storm.benchmark.lib.spout.starter.GenderSpout;
 import storm.benchmark.util.BenchmarkUtils;
-
-import java.util.concurrent.TimeUnit;
 
 public class SingleJoinBoltExample extends StormBenchmark {
     public static final String GENDER_ID = "gender";

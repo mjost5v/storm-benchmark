@@ -30,9 +30,7 @@ import java.util.Set;
 
 import static org.fest.assertions.api.Assertions.assertThat;
 import static org.mockito.Matchers.anyString;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.*;
 import static storm.benchmark.metrics.IMetricsCollector.MetricsItem;
 
 public class BasicMetricsCollectorTest {

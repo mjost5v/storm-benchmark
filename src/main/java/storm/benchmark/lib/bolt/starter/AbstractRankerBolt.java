@@ -17,6 +17,7 @@
  */
 package storm.benchmark.lib.bolt.starter;
 
+import org.apache.log4j.Logger;
 import org.apache.storm.Config;
 import org.apache.storm.topology.BasicOutputCollector;
 import org.apache.storm.topology.OutputFieldsDeclarer;
@@ -25,7 +26,6 @@ import org.apache.storm.tuple.Fields;
 import org.apache.storm.tuple.Tuple;
 import org.apache.storm.tuple.Values;
 import org.apache.storm.utils.TupleUtils;
-import org.apache.log4j.Logger;
 import storm.benchmark.lib.tools.starter.Rankings;
 
 import java.util.HashMap;
