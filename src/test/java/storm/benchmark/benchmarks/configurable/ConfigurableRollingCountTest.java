@@ -23,7 +23,6 @@ import org.apache.storm.generated.StormTopology;
 import org.apache.storm.utils.Utils;
 import org.testng.annotations.Test;
 import storm.benchmark.benchmarks.common.StormBenchmark;
-import storm.benchmark.lib.spout.configurable.ConfigurableRollingCount;
 import storm.benchmark.util.TestUtils;
 
 import static org.fest.assertions.api.Assertions.assertThat;
