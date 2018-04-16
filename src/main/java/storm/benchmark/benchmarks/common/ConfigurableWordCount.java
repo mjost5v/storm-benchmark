@@ -14,6 +14,7 @@ import org.apache.storm.tuple.Values;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import storm.benchmark.lib.operation.WordSplit;
+import storm.benchmark.lib.spout.configurable.ConfigurableFileReadSpout;
 import storm.benchmark.util.BenchmarkUtils;
 
 import java.util.HashMap;
@@ -52,11 +53,12 @@ public abstract class ConfigurableWordCount extends StormBenchmark {
         final int countRate = BenchmarkUtils.getInt(config, COUNT_RATE, DEFAULT_COUNT_BOLT_RATE);
 
         TopologyBuilder builder = new TopologyBuilder();
+        spout = new ConfigurableFileReadSpout(spoutRate);
 
         builder.setSpout(SPOUT_ID, spout, spoutNum);
         builder.setBolt(SPLIT_ID, new SplitSentence(splitRate), spBoltNum).localOrShuffleGrouping(
                 SPOUT_ID);
-        builder.setBolt(COUNT_ID, new WordCount.Count(), cntBoltNum).fieldsGrouping(SPLIT_ID,
+        builder.setBolt(COUNT_ID, new Count(countRate), cntBoltNum).fieldsGrouping(SPLIT_ID,
                 new Fields(WordCount.SplitSentence.FIELDS));
 
         return builder.createTopology();
